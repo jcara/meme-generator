@@ -9,7 +9,7 @@ var up = document.getElementById('upload'),
     uploaded = document.getElementById('uploaded'),
     placeholder_image = document.getElementById('placeholder_image');
 
-up.addEventListener('click', uploadToImgur);
+up.addEventListener('click', downloadDialogToUser);
 
 text1.addEventListener('keyup', updateImage);
 text2.addEventListener('keyup', updateImage);
@@ -34,7 +34,6 @@ placeholder_image.onload = function() {
     curImg = placeholder_image;
     updateImage();
 }
-
 function changeAndUpdateImage() {
     var img = new Image();
     readFile(file, function(dataURL) {
@@ -114,7 +113,7 @@ function autoScale(input, max) {
     return output;
 }
 
-
+/*
 function uploadToImgur() {
     uploaded.innerHTML = "Please wait, uploading...";
     var img;
@@ -147,4 +146,19 @@ function uploadToImgur() {
     });
 
 }
+*/
+function downloadDialogToUser(){
+    var data = canvas.toDataURL('image/png',1.0);
+    var img = new Image();
+    img.src = data;
 
+    var downloadLink = document.createElement("a");
+    downloadLink.appendChild(document.createTextNode("Click to dl"));
+    //downloadLink.href = "data:image/png;base64,"+String(img.src);
+    downloadLink.href = String(canvas.toDataURL('image/png',1.0));
+    downloadLink.download = "meme.png";
+    downloadLink.id = "dl";
+
+    uploaded.innerHTML = "";
+    uploaded.appendChild(downloadLink);
+}
