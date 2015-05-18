@@ -9,7 +9,7 @@ var up = document.getElementById('upload'),
     uploaded = document.getElementById('uploaded'),
     placeholder_image = document.getElementById('placeholder_image');
 
-up.addEventListener('click', downloadDialogToUser);
+up.addEventListener('click', downloadLinkToUser);
 
 text1.addEventListener('keyup', updateImage);
 text2.addEventListener('keyup', updateImage);
@@ -147,7 +147,7 @@ function uploadToImgur() {
 
 }
 */
-function downloadDialogToUser(){
+function downloadLinkToUser(){
     var data = canvas.toDataURL('image/png',1.0);
     var img = new Image();
     img.src = data;
